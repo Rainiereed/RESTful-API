@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const User = require('./models/user');
 
 mongoose.connect(
-    'mongodb+srv://dbuser:OOITGyDGMyyZbzEs@cluster0.riuw6.mongodb.net/Obtrax-database?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
+    process.env.DB_CONNECTION, 
+    { useNewUrlParser: true,
     useUnifiedTopology: true
 })
     .then(() => {
@@ -14,6 +15,7 @@ mongoose.connect(
     });
 
 const createUser = async (req, res, next) => {
+    console.log('test')
     const createUser = new User({
         name: req.body.name,
         personal_number: req.body.personal_number,
