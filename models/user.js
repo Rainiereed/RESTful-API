@@ -11,6 +11,11 @@ const userSchema = new mongoose.Schema({
     hospital_preference: { type: String, required: true },
     midwife_phone_number: { type: String, required: true },
     partner_phone_number: { type: String, required: true },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now,
+      }
 });
 
 module.exports = mongoose.model('User', userSchema);
